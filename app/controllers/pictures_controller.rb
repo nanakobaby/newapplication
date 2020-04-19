@@ -1,9 +1,18 @@
 class PicturesController < ApplicationController
-  before_action :set_picture, only: [:show, :edit, :update]
+  before_action :set_picture, only: [:show, :edit, :update, :destroy]
   def index
     @pictures = Picture.all
   end
   def show
+  end
+  def edit
+  end
+  def update
+    if @picture.update(picture_params)
+      redirect_to pictures_path, notice: "Pictureを編集しました!"
+    else
+      render :edit
+    end
   end
   def new
     @picture = Picture.new
@@ -15,15 +24,10 @@ class PicturesController < ApplicationController
     else
       render :new
     end
-    def edit
-    end
   end
-  def update
-    if @picture.update(picture_params)
-      redirect_to pictures_path, notice: "Pictureを編集しました!"
-    else
-      render :edit
-    end
+  def destroy
+    @picture.destroy
+    redirect_to pictures_path, notice: "Pictureを削除しました！"
   end
   private
   def picture_params

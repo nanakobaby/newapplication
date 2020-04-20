@@ -1,7 +1,11 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
+<<<<<<< HEAD
   <%= form.hidden_field :content %>
+=======
+  <%= form.hidden_field: content %>
+>>>>>>> 70544c2c40b80683737e700c91bb6ac120d03f10
   <p>タイトル: <%= @picture.title %></p>
   <p>本文: <%= @picture.content %></p>
   <%= form.submit "登録する" %>
